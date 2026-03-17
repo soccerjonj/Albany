@@ -1,17 +1,17 @@
 #!/bin/bash
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-TARGET="$SCRIPT_DIR/../../cities/data/BNA"
+TARGET="$SCRIPT_DIR/../../cities/data/ALB"
 VERSION="1.30.0"
 
-# Copy data files to cities/data/BNA
-echo "[Nashville Mod] Copying data files to cities/data/BNA..."
+# Copy data files to cities/data/ALB
+echo "[Albany Mod] Copying data files to cities/data/ALB..."
 mkdir -p "$TARGET"
-cp -f "$SCRIPT_DIR/data/BNA/"* "$TARGET/"
-echo "[Nashville Mod] Data files copied successfully."
+cp -f "$SCRIPT_DIR/data/ALB/"* "$TARGET/"
+echo "[Albany Mod] Data files copied successfully."
 
 # Check pmtiles binary
 if [ ! -f "$SCRIPT_DIR/pmtiles" ]; then
-    echo "[Nashville Mod] 'pmtiles' binary not found. Downloading..."
+    echo "[Albany Mod] 'pmtiles' binary not found. Downloading..."
     OS=$(uname -s)
     ARCH=$(uname -m)
     
@@ -40,13 +40,13 @@ if [ ! -f "$SCRIPT_DIR/pmtiles" ]; then
     
     if [ -f "$SCRIPT_DIR/pmtiles" ]; then
         chmod +x "$SCRIPT_DIR/pmtiles"
-        echo "[Nashville Mod] pmtiles downloaded and executable."
+        echo "[Albany Mod] pmtiles downloaded and executable."
     else
-        echo "[Nashville Mod] Error: Failed to download pmtiles. Please download it manually."
+        echo "[Albany Mod] Error: Failed to download pmtiles. Please download it manually."
         exit 1
     fi
 fi
 
 # Start tile server
-echo "[Nashville Mod] Starting tile server on port 8080..."
+echo "[Albany Mod] Starting tile server on port 8080..."
 "$SCRIPT_DIR/pmtiles" serve "$SCRIPT_DIR" --port 8080 --cors=*
